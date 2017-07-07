@@ -1,16 +1,28 @@
-// Container elements in the HTML file. Methods of objects will fill them with relevant data.
+/* 
+   :: MAIN SCRIPT FOR EXAMS ::
+   This file contains the objects of each section.
+   Most of the cases, there will be a total of 75 exercises. It MUST NOT be that particualar quantity, though.
+
+   :: TODO ::
+   1. Create a parent class from which the methods: buildExercise and saveAnswer are inherited since Grammar, Listening and Reading use it.
+   2. Every time the method saveAnswer is called, it must add input boxes to a form in order to send all the student input through a 'post' not a 'get'.
+
+   July 7th 2017
+   zero68
+*/
+
+/************************* HTML elements. Inside them the exercises will be displayed *********************/
 sectionNameContainer  = document.getElementById("section-name");
 sectionOrderContainer = document.getElementById("section-ordr");
 exerciseContainer 	  = document.getElementById("container");
 nxtbtnContainer 	  = document.getElementById("nxt-btn");
 
-// Variable that points to the current exercise.
+/************************************** Needed global variables ******************************************/
 pointer = 0;
 finalResult = "";
 
-// Constructors
-function Main (optionA, optionB, optionC) {
-
+/************************************** Constructors *****************************************************/
+// GRAMMAR section exercises
 function Grammar (clueString, optionA, optionB, optionC) {
 	this.sectionName  = "GRAMMAR SECTION";
 	this.sectionOrder = "Select the correct answer.";
@@ -32,8 +44,9 @@ function Grammar (clueString, optionA, optionB, optionC) {
 	};
 }
 
+// LISTENING section exercises
+section exercises
 function Listening (clueString, audioFile, optionA, optionB, optionC) {
-	// Create a dummy element so it is loaded in the background
 	dummy = document.createElement("audio");
 	dummy.src = "audio/"+ audioFile +".mp3" ;	
 
@@ -58,6 +71,7 @@ function Listening (clueString, audioFile, optionA, optionB, optionC) {
 	};
 }
 
+// READING section exercises
 function Reading (article, clueString, optionA, optionB, optionC) {
 	this.sectionName  = "READING SECTION";
 	this.sectionOrder = "Read and select the correct answer.";
@@ -80,6 +94,7 @@ function Reading (article, clueString, optionA, optionB, optionC) {
 	};
 }
 
+// CODING-A section exercises
 function CodingA (clueString, imageFile, helperString) {
 	// Create a dummy element so it is loaded in the background
 	dummy = document.createElement("img");
@@ -114,7 +129,6 @@ function CodingA (clueString, imageFile, helperString) {
 		return false;
 	};
 }
-
 
 // Function in charge of building and displaying an exercise based on pointer.
 function buildAndShow () {
